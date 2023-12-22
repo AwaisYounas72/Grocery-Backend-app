@@ -48,13 +48,13 @@ router.get('/get-all-products', async (req, res) => {
 //Create Routes
 
 //Post Route
-router.post('/add-product', upload.single('image'),async (req, res) => {
+router.post('/add-product', upload.single('image'), CreateProduct,async (req, res) => {
     try {
 
-        // const err = validationResult(req);
-        // if (!err.isEmpty()) {
-        //     return res.status(400).json({ eror: err.array() });
-        // }
+        const err = validationResult(req);
+        if (!err.isEmpty()) {
+            return res.status(400).json({ eror: err.array() });
+        }
         // res.send("user Created Successfully");
         const { title, description, price, feature, category } = req.body;
         const result = await uploadToCloud(req.file.buffer)
