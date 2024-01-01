@@ -11,7 +11,12 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.json({
+    Create_Products:"https://grocery-backend-app.vercel.app/add-product",
+    Get_All_Products:"https://grocery-backend-app.vercel.app/get-all-products",
+    Update_products:"https://grocery-backend-app.vercel.app/update-product/:awais",
+    Delete_Products:"https://grocery-backend-app.vercel.app/delete-product/:id"
+  })
 })
 
 app.use('/',Grocery );
